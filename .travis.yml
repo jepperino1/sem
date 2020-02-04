@@ -1,4 +1,11 @@
 # this is a java project using maven
+sudo: required
+
 language: java
-# install
-install: mvn install
+
+services:
+  - docker
+
+after_success:
+  - docker build -t se_methods .
+  - docker run se_methods
